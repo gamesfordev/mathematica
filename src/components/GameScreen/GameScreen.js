@@ -106,7 +106,6 @@ class GameScreen extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
-        this.sound('http://streaming.tdiradio.com:8000/house.mp3');
 
 
 
