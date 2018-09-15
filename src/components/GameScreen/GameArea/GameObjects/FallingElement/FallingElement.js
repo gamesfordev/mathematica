@@ -1,22 +1,45 @@
 import React, { Component } from 'react';
+import './FallingElement.css';
 
 class FallingElement extends Component {
 
     lifeTime = null;
+    lifeLoop = null;
+    leftPos = parseInt(Math.random() * 10000) % 90;
+    topPos = 0;
+    opacity = 1;
 
-    componentWillMount() {
+    componentDidMount() {
+        this.setState({
+            left : this.leftPos + '%',
+            top : this.topPos + 'px',
+            opacity : this.opacity
+        });
         this.lifeTime = setTimeout(() => {
             this.props.removeElement(this.props.id);
         }, 10000);
+
+        this.lifeLoop = setInterval(() => {
+            this.topPos += 5;
+            let hs = document.getElementById('gameView').clientHeight;
+            if(this.topPos >= hs - (hs * 0.3))
+                this.opacity -= 0.1;
+            this.setState({
+                left : this.leftPos + '%',
+                top : (this.topPos) + 'px',
+                opacity : this.opacity
+            });
+        }, 100);
     }
 
     componentWillUnmount() {
         clearTimeout(this.lifeTime);
+        clearInterval(this.lifeLoop);
     }
 
     render() {
         return (
-            <div className="FallingElement">
+            <div className="FallingElement" style={this.state}>
                 {this.props.challenge}
             </div>
         );
