@@ -6,8 +6,8 @@ import Paper from "@material-ui/core/es/Paper/Paper";
 import AppBar from "@material-ui/core/es/AppBar/AppBar";
 import Toolbar from "@material-ui/core/es/Toolbar/Toolbar";
 import Typography from "@material-ui/core/es/Typography/Typography";
-import fire from '../../fire';
 import soundFile from './bgmusic.mp3';
+
 class GameScreen extends Component {
 
     user = "";
@@ -106,12 +106,8 @@ class GameScreen extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
-        this.sound('http://streaming.tdiradio.com:8000/house.mp3');
 
-        fire.push({
-            user:this.user,
-            score:this.state.score
-        })
+
 
     }
 
@@ -135,6 +131,7 @@ class GameScreen extends Component {
                             updateScore={this.updateScore.bind(this)}
                             updateBuffer={this.updateBuffer.bind(this)}
                             flashImage={this.flashImage.bind(this)}
+                             user={this.user}
                             ></GameArea>
                         </Paper>
                     </Grid>

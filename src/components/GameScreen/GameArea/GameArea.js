@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 import './GameArea.css';
 import FallingElement from './GameObjects/FallingElement/FallingElement';
 import challengeList from '../../../gamedata/challenges/Challenges';
+import fire from "../../../fire";
 
 class GameArea extends Component {
 
@@ -106,6 +107,7 @@ class GameArea extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.user)
         this.startGameLoop();
         window.onkeydown = this.handleKeyPress.bind(this);
     }
@@ -146,7 +148,13 @@ class GameArea extends Component {
             ); 
         }
         if (this.redirect) {
-            //return <Redirect to='/end'/>;
+            fire.push({
+                user:this.props.user,
+                score:this.score
+            });
+
+            localStorage.setItem('score',this.score);
+            return <Redirect to='/end'/>;
         }
         return (
             <div className="GameArea">
