@@ -47,7 +47,8 @@ class GameArea extends Component {
     }
 
     removeElement(item) {
-        if(this.chances <= this.maxChances) {
+        this.chances ++;
+        if(this.chances < this.maxChances) {
             for(let i in this.gameObjects.elements){
                 if(item == this.gameObjects.elements[i].id) {
                     delete this.gameObjects.elements[i];
@@ -55,7 +56,7 @@ class GameArea extends Component {
                     break;
                 }
             }
-            this.chances ++;
+            
         }
         else {
             this.redirect = true;
