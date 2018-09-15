@@ -35,10 +35,14 @@
     padding: 10px;
     height: 48%;
     margin-bottom: 5px;
+    background-image: url("../../assets/img/scoreb.jpg");
+    background-size: cover;
 }
 .chances{
     padding: 10px;
     height: 48%;
+    background-image: url("../../assets/img/scoreb2.jpg");
+    background-size: cover;
 }
 .count{
     height: 75%;
