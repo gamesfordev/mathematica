@@ -7,15 +7,15 @@ class StartScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username:''
-    }
-
+      username: ''
+    };
   }
 
-  addName(event){
+  addName(event) {
     this.setState({
-      username:event.target.value
-    })
+      username: event.target.value
+    });
+    window.localStorage.setItem('username', event.target.value);
   }
 
   render() {
@@ -27,28 +27,27 @@ class StartScreen extends Component {
               <img src="" />
             </div>
             <div className="name">
-              <form className="loginForm"> 
-              <TextField
-                id="name"
-                label="Your Name"
-                margin="normal"
-                value={this.state.username}
-                className="user_name"
-                onChange={(e)=>this.addName(e)}
-              />
-              <Link to={"/game/"+this.state.username}><Button variant="contained" color="primary" className="">
-                Login
-              </Button></Link>
-
+              <form className="loginForm">
+                <TextField
+                  id="name"
+                  label="Your Name"
+                  margin="normal"
+                  value={this.state.username}
+                  className="user_name"
+                  onChange={e => this.addName(e)}
+                />
+                <Link to={'/game/' + this.state.username}>
+                  <Button variant="contained" color="primary" className="">
+                    Login
+                  </Button>
+                </Link>
               </form>
             </div>
           </div>
-        </div>        
+        </div>
       </div>
     );
   }
 }
-
-
 
 export default StartScreen;

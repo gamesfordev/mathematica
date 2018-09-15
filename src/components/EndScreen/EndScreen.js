@@ -8,6 +8,12 @@ import CardContent from '@material-ui/core/CardContent';
 import { Link } from 'react-router-dom';
 
 class EndScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      username: window.localStorage.getItem('username')
+    };
+  }
   render() {
     return (
       <div className="EndScreen">
@@ -44,7 +50,7 @@ class EndScreen extends Component {
               </Button>
             </Grid>
             <Grid item md={12} className="button">
-              <Link to={'/game?'}>
+              <Link to={'/game/' + this.state.username}>
                 <Button variant="contained" color="primary">
                   Play Again
                 </Button>
