@@ -73,7 +73,7 @@ class EndScreen extends Component {
                           <TableBody>
                               {this.state.players.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => {
                                   return (
-                                      <TableRow key={row.id}>
+                                      <TableRow key={row.id} className={this.state.username == row.user ? 'current-user': ''}>
 
                                           <TableCell>{row.user}</TableCell>
                                           <TableCell numeric>{row.score}</TableCell>
