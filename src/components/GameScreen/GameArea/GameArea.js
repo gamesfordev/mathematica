@@ -13,13 +13,17 @@ class GameArea extends Component {
     maxChances = 3;
     loop = null;
     redirect = false;
+    chalPointer = 0;
+    running = false;
 
     gameObjects = {
         elements: []
     };
+    
 
     getNextChallenge() {
-        return challengeList[parseInt(Math.random() * 1000000) % (challengeList.length)];
+        if(this.chalPointer == challengeList.length) return false;
+        return challengeList[this.chalPointer++];
     }
 
     processAns(ans) {
@@ -39,21 +43,20 @@ class GameArea extends Component {
         switch (e.key) {
             case "Enter":
                 ans = this.buffer;
-                this.processAns(ans);
                 this.buffer = "";
+                this.processAns(ans);
                 break;
             case "Backspace":
                 this.buffer = this.buffer.substr(0, (this.buffer.length - 1));
-                this.props.updateBuffer(this.buffer);
                 break;
 
             default:
                 if((e.keyCode >= 65 && e.keyCode <= 90) || e.key != "Shift") {
                     this.buffer += e.key;
-                    this.props.updateBuffer(this.buffer);
                 }
                 break;
         }
+        this.props.updateBuffer(this.buffer);
 
     }
 
@@ -64,8 +67,9 @@ class GameArea extends Component {
 
     removeElement(item) {
         this.chances++;
+        this.props.flashImage();
         this.props.updateChances(this.chances);
-        if (this.chances < this.maxChances) {
+        if (this.chances <= this.maxChances) {
             for (let i in this.gameObjects.elements) {
                 if (item == this.gameObjects.elements[i].id) {
                     delete this.gameObjects.elements[i];
@@ -84,6 +88,10 @@ class GameArea extends Component {
     getNewFallingElement() {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
+        if(!chal) {
+            this.redirect = true;
+            this.setState(this.gameObjects);
+        }
         let elem = {
             id: id,
             answer: chal.ans,
@@ -105,6 +113,7 @@ class GameArea extends Component {
     startGameLoop() {
         let self = this;
         this.loop = setInterval(() => {
+            this.running = true;
             this.gameObjects.elements.push(this.getNewFallingElement());
             this.setState(this.gameObjects);
 
@@ -112,13 +121,32 @@ class GameArea extends Component {
     }
 
     componentWillUnmount() {
+        this.running = false;
         clearInterval(this.loop);
     }
 
     render() {
         console.log(this.state);
+        if(!this.running) {
+            return (
+                <div className="GameArea">
+                   <div className="welcome">
+                        <h2>Mathematica Challenge</h2>
+                        <div>
+                            <br/>
+                            <h4>How to play!</h4>
+                            <br/>
+                            <div style={{'font-size' : '18px'}}>
+                                Solve a floating algebraic expression<br/>
+                                Type answer , then hit enter 
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            ); 
+        }
         if (this.redirect) {
-            // return <Redirect to='/end'/>;
+            //return <Redirect to='/end'/>;
         }
         return (
             <div className="GameArea">

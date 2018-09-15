@@ -1,10 +1,5 @@
 .GameScreen {
-    background:
-            linear-gradient(63deg, #999 23%, transparent 23%) 7px 0,
-            linear-gradient(63deg, transparent 74%, #999 78%),
-            linear-gradient(63deg, transparent 34%, #999 38%, #999 58%, transparent 62%),
-            #444;
-    background-size: 16px 48px;
+
 }
 
 .container{
@@ -31,14 +26,49 @@
     background-size: cover;
     overflow: hidden;
 }
+
+.game-anim {
+    animation-name: gameanim; 
+    animation-duration: 0.2s;
+    filter : grayscale(0);
+}
+
+@keyframes gameanim {
+    from {
+        filter : grayscale(0)
+    }
+    to {
+        filter : grayscale(1)
+    }
+    again {
+        filter : grayscale(0)
+    }
+}
 .score{
     padding: 10px;
     height: 48%;
     margin-bottom: 5px;
+
+    background-color: #fff;
+    background-image:
+            linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+            linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+
+
+    color: #000;
+
 }
 .chances{
     padding: 10px;
     height: 48%;
+    background-color: #fff;
+    background-image:
+            linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+            linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+
+    color: #000;
 }
 .count{
     height: 75%;
@@ -48,10 +78,25 @@
     text-align: center;
     font-size: 70px;
 }
+
+.buffer{
+    text-align: center;
+    font-size: 18px;
+}
+
+.buffer span.ans{
+    font-weight: bold;
+    color : red;
+    font-size: 18px;
+}
+
+.chances .count{
+    height: 60%;
+}
 h4{    margin: 0;
     font-size: 20px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #888;
     padding: 5px;}
     
 

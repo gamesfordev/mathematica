@@ -13,12 +13,33 @@ class GameScreen extends Component {
     user = "";
     maxChances = 3;
 
+    flashImage() {
+        this.setState({
+            gameScreenHeight: this.state.gameScreenHeight,
+            score: this.state.score,
+            chances: this.state.chances,
+            buffer: this.state.buffer,
+            cls : 'game game-anim'
+        });
+        setTimeout(() => {
+            this.setState({
+                gameScreenHeight: this.state.gameScreenHeight,
+                score: this.state.score,
+                chances: this.state.chances,
+                buffer: this.state.buffer,
+                cls : 'game'
+            });
+            
+        }, 500);
+    }
+
     updateChances(chances) {
         this.setState({
             gameScreenHeight: this.state.gameScreenHeight,
             score: this.state.score,
             chances: chances,
-            buffer: this.state.buffer
+            buffer: this.state.buffer,
+            cls : this.state.cls
         });
     }
 
@@ -27,7 +48,8 @@ class GameScreen extends Component {
             gameScreenHeight: this.state.gameScreenHeight,
             score: this.state.score,
             chances: this.state.chances,
-            buffer: buffer
+            buffer: buffer,
+            cls : this.state.cls
         });
     }
 
@@ -37,7 +59,8 @@ class GameScreen extends Component {
             gameScreenHeight: this.state.gameScreenHeight,
             score: score,
             chances: this.state.chances,
-            buffer: this.buffer
+            buffer: this.buffer,
+            cls : this.state.cls
         });
     }
 
@@ -47,7 +70,8 @@ class GameScreen extends Component {
             gameScreenHeight: 0,
             score: 0,
             chances: 0,
-            buffer: ""
+            buffer: "",
+            cls: "game" 
         }
         //let testObject = { 'username': this.user};
 
@@ -93,10 +117,11 @@ class GameScreen extends Component {
                 <Grid container spacing={24} className="container">
 
                     <Grid item xs={9} className="left-screen">
-                        <Paper className="game" id="gameView" >
+                        <Paper className={this.state.cls} id="gameView" >
                             <GameArea updateChances={this.updateChances.bind(this)} 
                             updateScore={this.updateScore.bind(this)}
                             updateBuffer={this.updateBuffer.bind(this)}
+                            flashImage={this.flashImage.bind(this)}
                             ></GameArea>
                         </Paper>
                     </Grid>
@@ -112,7 +137,10 @@ class GameScreen extends Component {
                             <div className="count">
                                 {this.state.chances} / {this.maxChances}
                             </div>
-                            <h3><span>Ans : </span>{this.state.buffer}</h3>
+                            <div className="buffer">
+                            <span>Ans : <span className="ans">{this.state.buffer}</span></span>
+                            </div>
+                            
                         </Paper>
                     </Grid>
 

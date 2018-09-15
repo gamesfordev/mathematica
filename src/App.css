@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers');
-
+@import url('https://fonts.googleapis.com/css?family=Delius');
 body,html{
     overflow-x: hidden;
     height: 100%;
-
+    background-image: linear-gradient(to right bottom, #10012c, #002850, #004966, #00696b, #2d8764);
 }
 
 *{
-    font-family: 'Bangers', cursive;
+    font-family: 'Delius', cursive;
 }
