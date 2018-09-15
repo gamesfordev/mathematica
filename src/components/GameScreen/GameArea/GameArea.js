@@ -5,15 +5,31 @@ import FallingElement from './GameObjects/FallingElement/FallingElement';
 class GameArea extends Component {
 
     buffer = "";
+    nextId = 0;
+    loop = null;
 
     gameObjects = {
         elements : []
     };
 
+
+    processAns(ans) {
+        console.log("handling ans");
+        for(let i in this.gameObjects.elements){
+            if(ans == this.gameObjects.elements[i].answer) {
+                delete this.gameObjects.elements[i];
+                this.setState(this.gameObjects);
+                break;
+            }
+        }
+    }
+
     handleKeyPress(e) {
         console.log(e);
+        let ans = "";
         if(e.key == "Enter") {
-            alert(this.buffer);
+            ans = this.buffer;
+            this.processAns(ans);
             this.buffer = "";
         }
         else {
@@ -24,7 +40,7 @@ class GameArea extends Component {
     }
 
     getNewFallingElement() {
-        let id = Math.random();
+        let id = this.nextId++;
         let elem = {
             answer : id,
             dom : <FallingElement key={id}/>
@@ -40,11 +56,15 @@ class GameArea extends Component {
 
     startGameLoop() {
         let self = this;
-        setInterval(() => {
+        this.loop = setInterval(() => {
             this.gameObjects.elements.push(this.getNewFallingElement());
             this.setState(this.gameObjects);
             
         }, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.loop);
     }
 
     render() {
