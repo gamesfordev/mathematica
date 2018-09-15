@@ -43,13 +43,25 @@ class GameArea extends Component {
 
     }
 
+    removeElement(item) {
+        console.log("remove me" + item);
+        for(let i in this.gameObjects.elements){
+            if(item == this.gameObjects.elements[i].id) {
+                delete this.gameObjects.elements[i];
+                this.setState(this.gameObjects);
+                break;
+            }
+        }
+    }
+
     getNewFallingElement() {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
         console.log(chal);
         let elem = {
+            id : id,
             answer : chal.ans,
-            dom : <FallingElement key={id} challenge={chal.q}/>
+            dom : <FallingElement key={id} id={id} challenge={chal.q} removeElement={this.removeElement.bind(this)}/>
         };
         return elem;
     }
