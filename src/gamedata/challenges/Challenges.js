@@ -1,13 +1,13 @@
 module.exports = [
     {
-        q : '1 + 2',
-        ans : '3',
+        q : 'sin²(x) + cos²(x)',
+        ans : '1',
         score : 1
     },
     {
-        q : '5 + 2',
-        ans : '7',
-        score : 1
+        q : '!4',
+        ans : '24',
+        score : 2
     },
     {
         q : '5 x 10',
