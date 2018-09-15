@@ -26,6 +26,24 @@
     background-size: cover;
     overflow: hidden;
 }
+
+.game-anim {
+    animation-name: gameanim; 
+    animation-duration: 0.2s;
+    filter : grayscale(0);
+}
+
+@keyframes gameanim {
+    from {
+        filter : grayscale(0)
+    }
+    to {
+        filter : grayscale(1)
+    }
+    again {
+        filter : grayscale(0)
+    }
+}
 .score{
     padding: 10px;
     height: 48%;
