@@ -25,3 +25,9 @@
 .current-user {
   background-color :#f9ef7d;
 }
+
+.loading {
+  padding: 32px !important;
+  text-align: center !important;
+  font-size: 24px !important;
+}
