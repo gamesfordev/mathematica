@@ -9,23 +9,22 @@ import { Link } from 'react-router-dom';
 import fire from '../../fire';
 
 class EndScreen extends Component {
-
-    constructor() {
-        super();
-        this.state={
-            winners:[]
-        }
-        let dbRef=fire.orderByChild("score");
-        dbRef.on('value', snapshot => {
-           const winners=Object.values(snapshot.val()).sort((a,b)=>b.score-a.score).slice(0,3)
-            this.setState({
-                winners:winners
-            })
-        })
-
-    }
-
-
+  constructor() {
+    super();
+    this.state = {
+      winners: [],
+      username: window.localStorage.getItem('username')
+    };
+    let dbRef = fire.orderByChild('score');
+    dbRef.on('value', snapshot => {
+      const winners = Object.values(snapshot.val())
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3);
+      this.setState({
+        winners: winners
+      });
+    });
+  }
 
   render() {
     return (
@@ -44,7 +43,10 @@ class EndScreen extends Component {
                 {this.state.winners.map(i => (
                   <Card className="winner-item">
                     <CardContent>
-                      <h2> {i.user} - {i.score}</h2>
+                      <h2>
+                        {' '}
+                        {i.user} - {i.score}
+                      </h2>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
@@ -63,7 +65,7 @@ class EndScreen extends Component {
               </Button>
             </Grid>
             <Grid item md={12} className="button">
-              <Link to={'/game?'}>
+              <Link to={'/game/' + this.state.username}>
                 <Button variant="contained" color="primary">
                   Play Again
                 </Button>
