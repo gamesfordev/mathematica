@@ -44,7 +44,7 @@ class EndScreen extends Component {
                 {this.state.winners.map(i => (
                   <Card className="winner-item">
                     <CardContent>
-                      <h2> {i.user}</h2>
+                      <h2> {i.user} - {i.score}</h2>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
