@@ -75,9 +75,11 @@ class EndScreen extends Component {
               </Button>
             </Grid>
             <Grid item md={12} className="button">
-              <Link to={'/game/' + this.state.username}>
+              <Link
+                to={this.state.username ? `/game/${this.state.username}` : `/`}
+              >
                 <Button variant="contained" color="primary">
-                  Play Again
+                  {this.state.username ? 'Play Again' : 'Play'}
                 </Button>
               </Link>
             </Grid>
