@@ -9,6 +9,7 @@ class GameArea extends Component {
     buffer = "";
     nextId = 0;
     chances = 0;
+    score = 0;
     maxChances = 3;
     loop = null;
     redirect = false;
@@ -24,6 +25,7 @@ class GameArea extends Component {
     processAns(ans) {
         for(let i in this.gameObjects.elements){
             if(ans == this.gameObjects.elements[i].answer) {
+                this.updateScore(this.gameObjects.elements[i].score);
                 delete this.gameObjects.elements[i];
                 this.setState(this.gameObjects);
                 break;
@@ -44,6 +46,11 @@ class GameArea extends Component {
         }
         
 
+    }
+
+    updateScore (score) {
+        this.score += score;
+        this.props.updateScore(this.score);
     }
 
     removeElement(item) {
@@ -71,6 +78,7 @@ class GameArea extends Component {
         let elem = {
             id : id,
             answer : chal.ans,
+            score : chal.score,
             dom : <FallingElement key={id} id={id} challenge={chal.q} removeElement={this.removeElement.bind(this)}/>
         };
         return elem;

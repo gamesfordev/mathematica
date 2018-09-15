@@ -20,6 +20,15 @@ class GameScreen extends Component {
         });
     }
 
+    updateScore(score) {
+        console.log(score);
+        this.setState({
+            gameScreenHeight: this.state.gameScreenHeight,
+            score: score,
+            chances: this.state.chances
+        });
+    }
+
     constructor(props){
         super(props);
         this.state={
@@ -61,7 +70,7 @@ class GameScreen extends Component {
 
               <Grid item xs={9} className="left-screen">
                   <Paper className="game" id="gameView" >
-                      <GameArea updateChances={this.updateChances.bind(this)}></GameArea>
+                      <GameArea updateChances={this.updateChances.bind(this)} updateScore={this.updateScore.bind(this)}></GameArea>
                   </Paper>
               </Grid>
               <Grid item xs={3} className="right-screen">
