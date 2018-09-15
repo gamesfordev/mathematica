@@ -24,6 +24,16 @@ class EndScreen extends Component {
         winners: winners
       });
     });
+    this.share = this.share.bind(this);
+    this.url = window.location.href;
+  }
+
+  share() {
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${this.url}`,
+      'pop',
+      'width=600, height=400, scrollbars=no'
+    );
   }
 
   render() {
@@ -60,7 +70,7 @@ class EndScreen extends Component {
           </Grid>
           <Grid item md={4} className="main-box" justify="center">
             <Grid item md={12} className="button">
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={this.share}>
                 Share
               </Button>
             </Grid>
