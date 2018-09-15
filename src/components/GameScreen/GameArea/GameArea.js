@@ -86,6 +86,9 @@ class GameArea extends Component {
 
     componentWillMount() {
         this.setState(this.gameObjects);
+    }
+
+    componentDidMount() {
         this.startGameLoop();
         window.onkeypress = this.handleKeyPress.bind(this);
     }
