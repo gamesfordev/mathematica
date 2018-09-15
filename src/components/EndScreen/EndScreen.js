@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import fire from '../../fire';
 
 class EndScreen extends Component {
+  loading = true;
   constructor() {
     super();
     this.state = {
@@ -28,6 +29,7 @@ class EndScreen extends Component {
     dbRef.on('value', snapshot => {
       const players = Object.values(snapshot.val())
         .sort((a, b) => b.score - a.score);
+        this.loading = false;  
       this.setState({
         players: players
       });
@@ -70,6 +72,7 @@ class EndScreen extends Component {
                               </TableRow>
                           </TableHead>
                           <TableBody>
+                            {this.loading ? <TableCell className="loading" colSpan={2}>Loading Scores...</TableCell> : null}
                               {this.state.players.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => {
                                   return (
                                       <TableRow key={row.id} className={this.state.username == row.user ? 'current-user': ''}>
