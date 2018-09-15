@@ -60,7 +60,7 @@ class GameScreen extends Component {
           <Grid container spacing={24} className="container">
 
               <Grid item xs={9} className="left-screen">
-                  <Paper className="game" >
+                  <Paper className="game" id="gameView" >
                       <GameArea updateChances={this.updateChances.bind(this)}></GameArea>
                   </Paper>
               </Grid>
