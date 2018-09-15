@@ -1,9 +1,9 @@
 .FallingElement{
     padding: 20px;
     position: absolute;
-    background-image: url("../../../../../assets/img/cloud.png");
+   /* background-image: url("../../../../../assets/img/cloud.png");
     background-size: cover;
-    background-color:transparent !important;
+    background-color:transparent !important;*/
     color: #000 ;
     text-align: center;
     width: 65px;
@@ -11,3 +11,34 @@
 
 }
 
+.cloud {
+    width: 70px; height: 30px;
+    background: #fff;
+
+    border-radius: 200px;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+
+    position: relative;
+}
+
+.cloud:before, .cloud:after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    width: 30px; height: 80px;
+    position: absolute; top: -15px; left: 10px;
+
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+    width: 40px; height: 40px;
+    top: -55px; left: auto; right: 15px;
+}
