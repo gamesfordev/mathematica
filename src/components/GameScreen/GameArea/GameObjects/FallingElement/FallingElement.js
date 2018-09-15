@@ -4,7 +4,7 @@ class FallingElement extends Component {
   render() {
     return (
       <div className="FallingElement">
-        {Math.random()}
+        {this.props.challenge}
       </div>
     );
   }

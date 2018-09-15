@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './GameArea.css';
 import FallingElement from './GameObjects/FallingElement/FallingElement';
+import challengeList from '../../../gamedata/challenges/Challenges';
 
 class GameArea extends Component {
 
@@ -12,6 +13,9 @@ class GameArea extends Component {
         elements : []
     };
 
+    getNextChallenge() {
+        return challengeList[parseInt(Math.random() * 1000000) % (challengeList.length)];
+    }
 
     processAns(ans) {
         console.log("handling ans");
@@ -41,9 +45,11 @@ class GameArea extends Component {
 
     getNewFallingElement() {
         let id = this.nextId++;
+        let chal = this.getNextChallenge();
+        console.log(chal);
         let elem = {
-            answer : id,
-            dom : <FallingElement key={id}/>
+            answer : chal.ans,
+            dom : <FallingElement key={id} challenge={chal.q}/>
         };
         return elem;
     }
@@ -60,7 +66,7 @@ class GameArea extends Component {
             this.gameObjects.elements.push(this.getNewFallingElement());
             this.setState(this.gameObjects);
             
-        }, 5000);
+        }, 2000);
     }
 
     componentWillUnmount() {
