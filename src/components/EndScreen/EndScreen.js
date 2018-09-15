@@ -54,6 +54,10 @@ class EndScreen extends Component {
         this.setState({ rowsPerPage: event.target.value });
     };
 
+    componentWillUnmount() {
+      this.loading = true;
+    }
+
   render() {
     return (
       <div className="EndScreen">
