@@ -7,7 +7,7 @@ import AppBar from "@material-ui/core/es/AppBar/AppBar";
 import Toolbar from "@material-ui/core/es/Toolbar/Toolbar";
 import Typography from "@material-ui/core/es/Typography/Typography";
 import fire from '../../fire';
-
+import soundFile from './bgmusic.mp3';
 class GameScreen extends Component {
 
     user = "";
@@ -73,18 +73,30 @@ class GameScreen extends Component {
             buffer: "",
             cls: "game" 
         }
-        //let testObject = { 'username': this.user};
 
-
-        // Put the object into storage
-        //localStorage.setItem('testObject', JSON.stringify(testObject));
-
-    }
+      }
+  sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+  }
+  
+  play = function(){
+      this.sound.play();
+  }
+  stop = function(){
+      this.sound.pause();
+  }  
     componentDidMount() {
         this.user = this.props.match.params.user;
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions);
         localStorage.setItem('username',this.user);
+        this.sound(soundFile);
+        this.play();
     }
 
     updateDimensions = () => {
@@ -94,6 +106,7 @@ class GameScreen extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
+        this.sound('http://streaming.tdiradio.com:8000/house.mp3');
 
         fire.push({
             user:this.user,
