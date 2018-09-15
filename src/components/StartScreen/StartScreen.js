@@ -9,6 +9,7 @@ class StartScreen extends Component {
     this.state = {
       username:''
     }
+    localStorage.removeItem('username');
 
   }
 
@@ -16,6 +17,7 @@ class StartScreen extends Component {
     this.setState({
       username:event.target.value
     })
+
   }
 
   render() {
