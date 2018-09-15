@@ -10,9 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+
 import { Link } from 'react-router-dom';
 import fire from '../../fire';
 
@@ -20,6 +18,7 @@ class EndScreen extends Component {
   constructor() {
     super();
     this.state = {
+        score:localStorage.getItem('score'),
         players: [],
       username: window.localStorage.getItem('username'),
         rowsPerPage:10,
@@ -103,6 +102,7 @@ class EndScreen extends Component {
                   <Paper  style={{padding:"20px"}}>
                       <div id="congratz">
                           <h2>Congratulations...!!!</h2>
+                          <h3>You have scored {this.state.score}</h3>
                           <img src="../../assets/img/badge.png"/>
 
 
