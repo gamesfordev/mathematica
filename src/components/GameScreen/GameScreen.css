@@ -22,7 +22,7 @@
 .game{
     height: 97%;
     padding: 10px;
-    background-image: url("../../assets/img/gamebg.png");
+    background-image: url("../../assets/img/gamebg.jpg");
     background-size: cover;
     overflow: hidden;
 }
