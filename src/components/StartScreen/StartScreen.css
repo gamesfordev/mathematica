@@ -12,9 +12,12 @@
 }
 .login_box{
     width: 40%;
-    height: 400px;
-    background-color: #bcd3db;
+    height: 320px;
+    background-color: #fff;
     margin: auto;
+    -webkit-box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.75);
 }
 .login_box .logo{
     width: 100%;
@@ -30,4 +33,9 @@
 }
 .loginForm .user_name{
     color: #f0f0f0
+}
+
+a{
+    text-decoration: none;
+    margin-left: 10px;
 }
