@@ -1,3 +1,33 @@
 .StartScreen {
 
 }
+.master{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login_box{
+    width: 40%;
+    height: 400px;
+    background-color: #bcd3db;
+    margin: auto;
+}
+.login_box .logo{
+    width: 100%;
+    height: 200px;
+    background: #f0f0f0
+}
+.login_box .name{
+    display: flex;
+}
+ .login_box .name .loginForm{
+    margin: auto;
+    height: 100px;
+}
+.loginForm .user_name{
+    color: #f0f0f0
+}
