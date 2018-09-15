@@ -48,7 +48,7 @@ class GameArea extends Component {
 
     removeElement(item) {
         this.chances ++;
-        this.props.updateChances(this.maxChances - this.chances);
+        this.props.updateChances(this.chances);
         if(this.chances < this.maxChances) {
             for(let i in this.gameObjects.elements){
                 if(item == this.gameObjects.elements[i].id) {
