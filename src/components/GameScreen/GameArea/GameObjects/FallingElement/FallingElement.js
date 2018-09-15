@@ -17,13 +17,13 @@ class FallingElement extends Component {
         });
         this.lifeTime = setTimeout(() => {
             this.props.removeElement(this.props.id);
-        }, 12000);
+        }, 15000);
 
         this.lifeLoop = setInterval(() => {
             this.topPos += 2;
             let hs = document.getElementById('gameView').clientHeight;
-            if(this.topPos >= hs - (hs * 0.2))
-                this.opacity -= 0.1;
+            //if(this.topPos >= hs - (hs * 0.2))
+                //this.opacity -= 0.1;
             this.setState({
                 left : this.leftPos + '%',
                 top : (this.topPos) + 'px',
