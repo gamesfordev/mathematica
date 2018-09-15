@@ -36,7 +36,7 @@ class StartScreen extends Component {
                 className="user_name"
                 onChange={(e)=>this.addName(e)}
               />
-              <Link to={"/game?"+this.state.username}><Button variant="contained" color="primary" className="">
+              <Link to={"/game/"+this.state.username}><Button variant="contained" color="primary" className="">
                 Login
               </Button></Link>
 

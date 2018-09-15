@@ -11,7 +11,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={StartScreen} />
-          <Route path="/game" component={GameScreen} />
+          <Route path="/game/:user" component={GameScreen} />
           <Route path="/end" component={EndScreen} />
         </div>
       </Router>
