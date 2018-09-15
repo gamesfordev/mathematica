@@ -102,11 +102,13 @@ class EndScreen extends Component {
               <Grid item xs={3} className="right-screen">
                   <Paper  style={{padding:"20px"}}>
                       <div id="congratz">
-                          Congratz !!!!
+                          <h2>Congratulations...!!!</h2>
+                          <img src="../../assets/img/badge.png"/>
+
 
                       </div>
 
-                      <Button variant="contained" color="primary" onClick={this.share}>
+                      <Button variant="contained" color="primary" onClick={this.share} className="btn">
                       Share
                       </Button>
 
@@ -114,7 +116,7 @@ class EndScreen extends Component {
                       <Link
                           to={this.state.username ? `/game/${this.state.username}` : `/`}
                       >
-                          <Button variant="contained" color="primary">
+                          <Button variant="contained" color="primary" className="btn">
                               {this.state.username ? 'Play Again' : 'Play'}
                           </Button>
                       </Link>
