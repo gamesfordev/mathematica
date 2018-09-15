@@ -10,7 +10,7 @@ import fire from '../../fire';
 
 class GameScreen extends Component {
 
-    user='John Doe';
+    user=this.props.location.search.substr(1);;
     maxChances = 3;
 
     updateChances(chances) {
@@ -21,9 +21,17 @@ class GameScreen extends Component {
         });
     }
 
-    constructor(){
-        super();
-        fire.push({"sadfs":"sdf"})
+    updateScore(score) {
+        console.log(score);
+        this.setState({
+            gameScreenHeight: this.state.gameScreenHeight,
+            score: score,
+            chances: this.state.chances
+        });
+    }
+
+    constructor(props){
+        super(props);
         this.state={
             gameScreenHeight: 0,
             score:0,
@@ -63,8 +71,8 @@ class GameScreen extends Component {
           <Grid container spacing={24} className="container">
 
               <Grid item xs={9} className="left-screen">
-                  <Paper className="game" >
-                      <GameArea updateChances={this.updateChances.bind(this)}></GameArea>
+                  <Paper className="game" id="gameView" >
+                      <GameArea updateChances={this.updateChances.bind(this)} updateScore={this.updateScore.bind(this)}></GameArea>
                   </Paper>
               </Grid>
               <Grid item xs={3} className="right-screen">
