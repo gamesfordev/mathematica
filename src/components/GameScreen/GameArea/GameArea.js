@@ -13,13 +13,16 @@ class GameArea extends Component {
     maxChances = 3;
     loop = null;
     redirect = false;
+    chalPointer = 0;
 
     gameObjects = {
         elements: []
     };
+    
 
     getNextChallenge() {
-        return challengeList[parseInt(Math.random() * 1000000) % (challengeList.length)];
+        if(this.chalPointer == challengeList.length) return false;
+        return challengeList[this.chalPointer++];
     }
 
     processAns(ans) {
@@ -84,6 +87,10 @@ class GameArea extends Component {
     getNewFallingElement() {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
+        if(!chal) {
+            this.redirect = true;
+            this.setState(this.gameObjects);
+        }
         let elem = {
             id: id,
             answer: chal.ans,
@@ -118,7 +125,7 @@ class GameArea extends Component {
     render() {
         console.log(this.state);
         if (this.redirect) {
-            // return <Redirect to='/end'/>;
+            return <Redirect to='/end'/>;
         }
         return (
             <div className="GameArea">
