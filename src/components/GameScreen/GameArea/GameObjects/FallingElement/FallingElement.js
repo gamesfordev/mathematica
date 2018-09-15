@@ -39,7 +39,7 @@ class FallingElement extends Component {
 
     render() {
         return (
-            <div className="FallingElement" style={this.state}>
+            <div className="FallingElement swing" style={this.state}>
                 {this.props.challenge}
             </div>
         );
