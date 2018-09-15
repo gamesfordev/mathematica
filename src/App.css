@@ -3,7 +3,7 @@
 body,html{
     overflow-x: hidden;
     height: 100%;
-
+    background-image: linear-gradient(to right bottom, #10012c, #002850, #004966, #00696b, #2d8764);
 }
 
 *{
