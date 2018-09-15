@@ -31,6 +31,7 @@ class GameScreen extends Component {
     }
 
     componentDidMount() {
+        this.user = this.props.match.params.user;
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions);
     }
