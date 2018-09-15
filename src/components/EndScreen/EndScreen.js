@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import { Link } from 'react-router-dom';
 
 class EndScreen extends Component {
   render() {
@@ -43,9 +44,11 @@ class EndScreen extends Component {
               </Button>
             </Grid>
             <Grid item md={12} className="button">
-              <Button variant="contained" color="primary">
-                Play Again
-              </Button>
+              <Link to={'/game?'}>
+                <Button variant="contained" color="primary">
+                  Play Again
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Grid>
