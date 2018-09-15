@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/es/Paper/Paper";
 import AppBar from "@material-ui/core/es/AppBar/AppBar";
 import Toolbar from "@material-ui/core/es/Toolbar/Toolbar";
 import Typography from "@material-ui/core/es/Typography/Typography";
+import fire from '../../fire';
 
 class GameScreen extends Component {
 
@@ -55,7 +56,6 @@ class GameScreen extends Component {
         //localStorage.setItem('testObject', JSON.stringify(testObject));
 
     }
-
     componentDidMount() {
         this.user = this.props.match.params.user;
         this.updateDimensions();
@@ -70,6 +70,12 @@ class GameScreen extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
+
+        fire.push({
+            user:this.user,
+            score:this.state.score
+        })
+
     }
 
     render() {
