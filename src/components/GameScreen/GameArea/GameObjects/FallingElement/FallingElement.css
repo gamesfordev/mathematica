@@ -1,0 +1,6 @@
+.FallingElement{
+    padding: 12px;
+    background-color: brown;
+    color: white;
+    position: absolute;
+}

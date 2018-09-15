@@ -22,7 +22,6 @@ class GameArea extends Component {
     }
 
     processAns(ans) {
-        console.log("handling ans");
         for(let i in this.gameObjects.elements){
             if(ans == this.gameObjects.elements[i].answer) {
                 delete this.gameObjects.elements[i];
@@ -48,8 +47,7 @@ class GameArea extends Component {
     }
 
     removeElement(item) {
-        console.log("remove me" + item);
-        if(this.chances < this.maxChances) {
+        if(this.chances <= this.maxChances) {
             for(let i in this.gameObjects.elements){
                 if(item == this.gameObjects.elements[i].id) {
                     delete this.gameObjects.elements[i];
@@ -58,17 +56,16 @@ class GameArea extends Component {
                 }
             }
             this.chances ++;
-            console.log("chances " + this.chances);
         }
         else {
             this.redirect = true;
+            this.setState(this.gameObjects);
         }
     }
 
     getNewFallingElement() {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
-        console.log(chal);
         let elem = {
             id : id,
             answer : chal.ans,
@@ -99,7 +96,7 @@ class GameArea extends Component {
     render() {
         console.log(this.state);
         if(this.redirect) {
-            //return <Redirect to='/end'/>;
+            return <Redirect to='/end'/>;
         }
         return (
             <div className="GameArea">
