@@ -13,12 +13,20 @@
 
 .left-screen{
     height: 80vh;
+
 }
 .right-screen{
 
 }
+
+.user{
+    flex-grow: 1;
+    text-align: right;
+    justify-content: flex-end;
+}
 .game{
     height: 97%;
+    padding: 10px;
 }
 .score{
     padding: 10px;
@@ -29,8 +37,19 @@
     padding: 10px;
     height: 48%;
 }
-
-h4{margin: 0}
+.count{
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 70px;
+}
+h4{    margin: 0;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;}
     
 
 .master{
@@ -64,4 +83,5 @@ h4{margin: 0}
 .loginForm .user_name{
     color: #f0f0f0
 }
+
 
