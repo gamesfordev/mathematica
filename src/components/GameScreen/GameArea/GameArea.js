@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router'
 import './GameArea.css';
 import FallingElement from './GameObjects/FallingElement/FallingElement';
 import challengeList from '../../../gamedata/challenges/Challenges';
@@ -7,7 +8,10 @@ class GameArea extends Component {
 
     buffer = "";
     nextId = 0;
+    chances = 0;
+    maxChances = 3;
     loop = null;
+    redirect = false;
 
     gameObjects = {
         elements : []
@@ -45,12 +49,19 @@ class GameArea extends Component {
 
     removeElement(item) {
         console.log("remove me" + item);
-        for(let i in this.gameObjects.elements){
-            if(item == this.gameObjects.elements[i].id) {
-                delete this.gameObjects.elements[i];
-                this.setState(this.gameObjects);
-                break;
+        if(this.chances < this.maxChances) {
+            for(let i in this.gameObjects.elements){
+                if(item == this.gameObjects.elements[i].id) {
+                    delete this.gameObjects.elements[i];
+                    this.setState(this.gameObjects);
+                    break;
+                }
             }
+            this.chances ++;
+            console.log("chances " + this.chances);
+        }
+        else {
+            this.redirect = true;
         }
     }
 
@@ -87,6 +98,9 @@ class GameArea extends Component {
 
     render() {
         console.log(this.state);
+        if(this.redirect) {
+            return <Redirect to='/end'/>;
+        }
         return (
             <div className="GameArea">
                 {

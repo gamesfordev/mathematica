@@ -5,9 +5,9 @@ class FallingElement extends Component {
     lifeTime = null;
 
     componentWillMount() {
-        setTimeout(() => {
+        this.lifeTime = setTimeout(() => {
             this.props.removeElement(this.props.id);
-        }, 7000);
+        }, 10000);
     }
 
     componentWillUnmount() {
