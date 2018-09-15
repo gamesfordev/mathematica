@@ -1,14 +1,12 @@
 .FallingElement{
-    padding: 20px;
+    padding: 12px;
     position: absolute;
-   /* background-image: url("../../../../../assets/img/cloud.png");
-    background-size: cover;
-    background-color:transparent !important;*/
+    background-color: chocolate;
     color: #000 ;
     text-align: center;
-    width: 65px;
-    height: 30px;
-
+    width: auto;
+    height: 20px;
+    font-weight: bold;
 }
 
 .cloud {
