@@ -20,7 +20,7 @@ class FallingElement extends Component {
         }, 10000);
 
         this.lifeLoop = setInterval(() => {
-            this.topPos += 5;
+            this.topPos += 2;
             let hs = document.getElementById('gameView').clientHeight;
             if(this.topPos >= hs - (hs * 0.3))
                 this.opacity -= 0.1;
@@ -29,7 +29,7 @@ class FallingElement extends Component {
                 top : (this.topPos) + 'px',
                 opacity : this.opacity
             });
-        }, 100);
+        }, 40);
     }
 
     componentWillUnmount() {
