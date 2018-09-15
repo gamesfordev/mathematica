@@ -6,7 +6,7 @@ class FallingElement extends Component {
     lifeTime = null;
     lifeLoop = null;
     leftPos = parseInt(Math.random() * 10000) % 90;
-    topPos = 0;
+    topPos = -70;
     opacity = 1;
 
     componentDidMount() {
@@ -17,7 +17,7 @@ class FallingElement extends Component {
         });
         this.lifeTime = setTimeout(() => {
             this.props.removeElement(this.props.id);
-        }, 10000);
+        }, 12000);
 
         this.lifeLoop = setInterval(() => {
             this.topPos += 2;
