@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/es/Typography/Typography";
 
 class GameScreen extends Component {
 
-    user='John Doe';
+    user=this.props.location.search.substr(1);;
     maxChances = 3;
 
     updateChances(chances) {
@@ -20,8 +20,8 @@ class GameScreen extends Component {
         });
     }
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             gameScreenHeight: 0,
             score:0,
