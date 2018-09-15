@@ -5,7 +5,7 @@ class FallingElement extends Component {
 
     lifeTime = null;
     lifeLoop = null;
-    leftPos = parseInt(Math.random() * 10000) % 90;
+    leftPos = parseInt(Math.random() * 10000) % 85;
     topPos = -70;
     opacity = 1;
 
