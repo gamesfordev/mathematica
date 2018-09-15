@@ -32,6 +32,7 @@ class GameScreen extends Component {
 
     constructor(props){
         super(props);
+
         this.state={
             gameScreenHeight: 0,
             score:0,
@@ -39,7 +40,6 @@ class GameScreen extends Component {
         }
 
     }
-
     componentDidMount() {
         this.user = this.props.match.params.user;
         this.updateDimensions();
@@ -53,6 +53,11 @@ class GameScreen extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateDimensions);
+
+        fire.push({
+            user:this.user,
+            score:this.state.score
+        })
 
     }
 
