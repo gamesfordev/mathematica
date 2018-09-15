@@ -9,10 +9,13 @@ import Typography from "@material-ui/core/es/Typography/Typography";
 
 class GameScreen extends Component {
 
+    user='John Doe';
     constructor(){
         super();
         this.state={
-            gameScreenHeight: 0
+            gameScreenHeight: 0,
+            score:0,
+            chances:10
         }
 
     }
@@ -23,7 +26,6 @@ class GameScreen extends Component {
     }
 
     updateDimensions = ()=>{
-        console.log("ddddddd")
         const gameScreenHeight =( document.querySelectorAll('.game')[0].clientHeight/2)-22;
         this.setState({gameScreenHeight: gameScreenHeight})
     }
@@ -40,6 +42,7 @@ class GameScreen extends Component {
                   <Typography variant="title" color="inherit">
                       Mathamatica
                   </Typography>
+                  <span className="user">{this.user}</span>
               </Toolbar>
           </AppBar>
 
@@ -53,15 +56,15 @@ class GameScreen extends Component {
               <Grid item xs={3} className="right-screen">
                   <Paper className="score" style={{height:this.state.gameScreenHeight}}>
                       <h4>Score</h4>
-gfdfgdfgdf
-                      fdgfdg
-                      dfgdfg
+                       <div className="count">
+                           {this.state.score}
+                       </div>
                   </Paper>
                   <Paper className="chances" style={{height:this.state.gameScreenHeight}}>
                       <h4>Chances</h4>
-                      fgdfgd
-                      dfgdfg
-                      dfg
+                      <div className="count">
+                          {this.state.chances}
+                      </div>
                   </Paper>
               </Grid>
 

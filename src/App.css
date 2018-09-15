@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
 body,html{
     overflow-x: hidden;
     height: 100%;
+
+}
+
+*{
+    font-family: 'Bangers', cursive;
 }
