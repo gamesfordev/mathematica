@@ -42,21 +42,20 @@ class GameArea extends Component {
         switch (e.key) {
             case "Enter":
                 ans = this.buffer;
-                this.processAns(ans);
                 this.buffer = "";
+                this.processAns(ans);
                 break;
             case "Backspace":
                 this.buffer = this.buffer.substr(0, (this.buffer.length - 1));
-                this.props.updateBuffer(this.buffer);
                 break;
 
             default:
                 if((e.keyCode >= 65 && e.keyCode <= 90) || e.key != "Shift") {
                     this.buffer += e.key;
-                    this.props.updateBuffer(this.buffer);
                 }
                 break;
         }
+        this.props.updateBuffer(this.buffer);
 
     }
 
