@@ -14,6 +14,7 @@ class GameArea extends Component {
     loop = null;
     redirect = false;
     chalPointer = 0;
+    running = false;
 
     gameObjects = {
         elements: []
@@ -112,6 +113,7 @@ class GameArea extends Component {
     startGameLoop() {
         let self = this;
         this.loop = setInterval(() => {
+            this.running = true;
             this.gameObjects.elements.push(this.getNewFallingElement());
             this.setState(this.gameObjects);
 
@@ -119,11 +121,30 @@ class GameArea extends Component {
     }
 
     componentWillUnmount() {
+        this.running = false;
         clearInterval(this.loop);
     }
 
     render() {
         console.log(this.state);
+        if(!this.running) {
+            return (
+                <div className="GameArea">
+                   <div className="welcome">
+                        <h2>Mathematica Challenge</h2>
+                        <div>
+                            <br/>
+                            <h4>How to play!</h4>
+                            <br/>
+                            <div style={{'font-size' : '18px'}}>
+                                Solve a floating algebraic expression<br/>
+                                Type answer , then hit enter 
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            ); 
+        }
         if (this.redirect) {
             //return <Redirect to='/end'/>;
         }

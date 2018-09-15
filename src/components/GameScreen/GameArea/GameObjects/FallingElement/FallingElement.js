@@ -17,7 +17,7 @@ class FallingElement extends Component {
         });
         this.lifeTime = setTimeout(() => {
             this.props.removeElement(this.props.id);
-        }, 15000);
+        }, 14000);
 
         this.lifeLoop = setInterval(() => {
             this.topPos += 2;

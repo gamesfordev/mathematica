@@ -2,3 +2,7 @@
     position: relative;
 }
 
+.GameArea .welcome {
+    font-size: 32px;
+    text-align: center;
+}
