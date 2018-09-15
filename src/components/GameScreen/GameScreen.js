@@ -10,12 +10,22 @@ import Typography from "@material-ui/core/es/Typography/Typography";
 class GameScreen extends Component {
 
     user='John Doe';
+    maxChances = 3;
+
+    updateChances(chances) {
+        this.setState({
+            gameScreenHeight: this.state.gameScreenHeight,
+            score: this.state.score,
+            chances: chances
+        });
+    }
+
     constructor(){
         super();
         this.state={
             gameScreenHeight: 0,
             score:0,
-            chances:10
+            chances:0
         }
 
     }
@@ -50,7 +60,7 @@ class GameScreen extends Component {
 
               <Grid item xs={9} className="left-screen">
                   <Paper className="game" >
-                      <GameArea></GameArea>
+                      <GameArea updateChances={this.updateChances.bind(this)}></GameArea>
                   </Paper>
               </Grid>
               <Grid item xs={3} className="right-screen">
@@ -63,7 +73,7 @@ class GameScreen extends Component {
                   <Paper className="chances" style={{height:this.state.gameScreenHeight}}>
                       <h4>Chances</h4>
                       <div className="count">
-                          {this.state.chances}
+                          {this.state.chances} / {this.maxChances}
                       </div>
                   </Paper>
               </Grid>

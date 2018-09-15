@@ -4,6 +4,20 @@ import './StartScreen.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 class StartScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username:''
+    }
+
+  }
+
+  addName(event){
+    this.setState({
+      username:event.target.value
+    })
+  }
+
   render() {
     return (
       <div className="StartScreen">
@@ -17,11 +31,12 @@ class StartScreen extends Component {
               <TextField
                 id="name"
                 label="Your Name"
-                value=""
                 margin="normal"
+                value={this.state.username}
                 className="user_name"
+                onChange={(e)=>this.addName(e)}
               />
-              <Link to="/game"><Button variant="contained" color="primary" className="">
+              <Link to={"/game?"+this.state.username}><Button variant="contained" color="primary" className="">
                 Login
               </Button></Link>
 

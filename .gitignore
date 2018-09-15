@@ -19,8 +19,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<< HEAD
 .idea
-=======
 .DS_Store
->>>>>>> 37e995a3564d81b081067ca069509bd8a2e98ea1
