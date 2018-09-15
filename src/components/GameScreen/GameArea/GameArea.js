@@ -66,7 +66,7 @@ class GameArea extends Component {
             this.gameObjects.elements.push(this.getNewFallingElement());
             this.setState(this.gameObjects);
             
-        }, 2000);
+        }, 5000);
     }
 
     componentWillUnmount() {
