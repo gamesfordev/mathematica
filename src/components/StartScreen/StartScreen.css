@@ -1,5 +1,5 @@
-.GameScreen {
-    
+.StartScreen {
+
 }
 .master{
     overflow: hidden;
@@ -24,8 +24,7 @@
 .login_box .name{
     display: flex;
 }
-
-.login_box .name .loginForm{
+ .login_box .name .loginForm{
     margin: auto;
     height: 100px;
 }

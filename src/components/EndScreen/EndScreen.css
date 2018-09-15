@@ -1,0 +1,20 @@
+.EndScreen {
+  margin: 2rem;
+}
+
+.title {
+  text-align: center;
+}
+
+.main-box {
+  border: 2px solid beige;
+  text-align: center;
+}
+
+.winner-item {
+  margin: 1rem;
+}
+
+.button {
+  padding: 1rem;
+}
