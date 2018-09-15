@@ -18,3 +18,22 @@
 .button {
   padding: 1rem;
 }
+#congratz{
+  margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn{
+    width: 47%;
+
+}
+
+.current-user {
+  background-color :#f9ef7d;
+}
+
+.loading {
+  padding: 32px !important;
+  text-align: center !important;
+  font-size: 24px !important;
+}
