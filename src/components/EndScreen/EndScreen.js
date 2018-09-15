@@ -16,20 +16,32 @@ import fire from '../../fire';
 
 class EndScreen extends Component {
   loading = true;
-  constructor() {
+
+  constructor(){
     super();
     this.state = {
-        score:localStorage.getItem('score'),
-        players: [],
+      score: localStorage.getItem('score'),
+      players: [],
       username: window.localStorage.getItem('username'),
-        rowsPerPage:10,
-        page:0
+      rowsPerPage: 10,
+      page: 0
+    };
+  }
+
+  componentDidMount() {
+    this.loading = true;
+    this.state = {
+      score: localStorage.getItem('score'),
+      players: [],
+      username: window.localStorage.getItem('username'),
+      rowsPerPage: 10,
+      page: 0
     };
     let dbRef = fire.orderByChild('score');
     dbRef.on('value', snapshot => {
       const players = Object.values(snapshot.val())
         .sort((a, b) => b.score - a.score);
-        this.loading = false;  
+      this.loading = false;
       this.setState({
         players: players
       });
@@ -46,90 +58,90 @@ class EndScreen extends Component {
     );
   }
 
-    handleChangePage = (event, page) => {
-        this.setState({ page });
-    };
+  handleChangePage = (event, page) => {
+    this.setState({ page });
+  };
 
-    handleChangeRowsPerPage = event => {
-        this.setState({ rowsPerPage: event.target.value });
-    };
+  handleChangeRowsPerPage = event => {
+    this.setState({ rowsPerPage: event.target.value });
+  };
 
-    componentWillUnmount() {
-      this.loading = true;
-    }
+  componentWillUnmount() {
+    this.loading = true;
+  }
 
   render() {
     return (
       <div className="EndScreen">
         <h1 className="title"> Mathematica logo here</h1>
 
-          <Grid container spacing={24} className="container">
+        <Grid container spacing={24} className="container">
 
-              <Grid item xs={9} className="left-screen">
-                  <Paper id="leaderbrd" >
+          <Grid item xs={9} className="left-screen">
+            <Paper id="leaderbrd" >
 
-                      <Table >
-                          <TableHead>
-                              <TableRow>
-                                  <TableCell>Player</TableCell>
-                                  <TableCell numeric>Score</TableCell>
-                              </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {this.loading ? <TableCell className="loading" colSpan={2}>Loading Scores...</TableCell> : null}
-                              {this.state.players.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => {
-                                  return (
-                                      <TableRow key={row.id} className={this.state.username == row.user ? 'current-user': ''}>
+              <Table >
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Player</TableCell>
+                    <TableCell numeric>Score</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {this.loading ? <TableCell className="loading" colSpan={2}>Loading Scores...</TableCell> : null}
+                  {this.state.players.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => {
+                    return (
+                      <TableRow key={row.id} className={this.state.username == row.user ? 'current-user' : ''}>
 
-                                          <TableCell>{row.user}</TableCell>
-                                          <TableCell numeric>{row.score}</TableCell>
+                        <TableCell>{row.user}</TableCell>
+                        <TableCell numeric>{row.score}</TableCell>
 
-                                      </TableRow>
-                                  );
-                              })}
-                          </TableBody>
-                          <TableFooter>
-                              <TableRow>
-                                  <TablePagination
-                                      colSpan={2}
-                                      count={this.state.players.length}
-                                      rowsPerPage={this.state.rowsPerPage}
-                                      page={this.state.page}
-                                      onChangePage={this.handleChangePage}
-                                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TablePagination
+                      colSpan={2}
+                      count={this.state.players.length}
+                      rowsPerPage={this.state.rowsPerPage}
+                      page={this.state.page}
+                      onChangePage={this.handleChangePage}
+                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
 
-                                  />
-                              </TableRow>
-                          </TableFooter>
-                      </Table>
+                    />
+                  </TableRow>
+                </TableFooter>
+              </Table>
 
-                  </Paper>
-              </Grid>
-              <Grid item xs={3} className="right-screen">
-                  <Paper  style={{padding:"20px"}}>
-                      <div id="congratz">
-                          <h2>Congratulations...!!!</h2>
-                          <h3>You have scored {this.state.score}</h3>
-                          <img src="../../assets/img/badge.png"/>
+            </Paper>
+          </Grid>
+          <Grid item xs={3} className="right-screen">
+            <Paper style={{ padding: "20px" }}>
+              <div id="congratz">
+                <h2>Congratulations...!!!</h2>
+                <h3>You have scored {this.state.score}</h3>
+                <img src="../../assets/img/badge.png" />
 
 
-                      </div>
+              </div>
 
-                      <Button variant="contained" color="primary" onClick={this.share} className="btn">
-                      Share
+              <Button variant="contained" color="primary" onClick={this.share} className="btn">
+                Share
                       </Button>
 
 
-                      <Link
-                          to={this.state.username ? `/game/${this.state.username}` : `/`}
-                      >
-                          <Button variant="contained" color="primary" className="btn">
-                              {this.state.username ? 'Play Again' : 'Play'}
-                          </Button>
-                      </Link>
-                  </Paper>
-              </Grid>
+              <Link
+                to={this.state.username ? `/game/${this.state.username}` : `/`}
+              >
+                <Button variant="contained" color="primary" className="btn">
+                  {this.state.username ? 'Play Again' : 'Play'}
+                </Button>
+              </Link>
+            </Paper>
           </Grid>
+        </Grid>
       </div>
     );
   }
