@@ -124,7 +124,7 @@ class GameArea extends Component {
     render() {
         console.log(this.state);
         if (this.redirect) {
-            return <Redirect to='/end'/>;
+            //return <Redirect to='/end'/>;
         }
         return (
             <div className="GameArea">

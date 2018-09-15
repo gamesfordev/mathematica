@@ -112,7 +112,10 @@ class GameScreen extends Component {
                             <div className="count">
                                 {this.state.chances} / {this.maxChances}
                             </div>
-                            <h3><span>Ans : </span>{this.state.buffer}</h3>
+                            <div className="buffer">
+                            <span>Ans : <span className="ans">{this.state.buffer}</span></span>
+                            </div>
+                            
                         </Paper>
                     </Grid>
 

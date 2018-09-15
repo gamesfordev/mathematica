@@ -49,6 +49,17 @@
     font-size: 70px;
 }
 
+.buffer{
+    text-align: center;
+    font-size: 18px;
+}
+
+.buffer span.ans{
+    font-weight: bold;
+    color : red;
+    font-size: 18px;
+}
+
 .chances .count{
     height: 60%;
 }
