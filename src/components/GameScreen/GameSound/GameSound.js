@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import soundFile from '../bgmusic.mp3';
+import soundFile from '../../../assets/audio/bgmusic.mp3';
+import beepFile from '../../../assets/audio/beep.mp3';
 
 class GameSound extends Component {
 
   playEffect(effect) {
     console.log("play sound : " + effect);
+    let audio = new Audio(beepFile);
+    audio.play();
   }
 
   componentDidMount() {
