@@ -21,7 +21,7 @@ class FallingElement extends Component {
 
         this.lifeLoop = setInterval(() => {
             this.topPos += 2;
-            let hs = document.getElementById('gameView').clientHeight;
+            //let hs = document.getElementById('gameView').clientHeight;
             //if(this.topPos >= hs - (hs * 0.2))
                 //this.opacity -= 0.1;
             this.setState({

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 import './GameArea.css';
 import FallingElement from './GameObjects/FallingElement/FallingElement';
 import challengeList from '../../../gamedata/challenges/Challenges';
@@ -75,7 +75,7 @@ class GameArea extends Component {
         this.props.playEffect('missed-sound');
         this.props.flashImage();
         this.props.updateChances(this.chances);
-        if (this.chances <= this.maxChances) {
+        if (this.chances < this.maxChances) {
             for (let i in this.gameObjects.elements) {
                 if (item == this.gameObjects.elements[i].id) {
                     delete this.gameObjects.elements[i];
@@ -86,8 +86,8 @@ class GameArea extends Component {
 
         }
         else {
+            clearInterval(this.loop);
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
     }
 
@@ -96,8 +96,9 @@ class GameArea extends Component {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
         if(!chal) {
+            console.log('empty q');
+            clearInterval(this.loop);
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
         let elem = {
             id: id,
@@ -108,12 +109,9 @@ class GameArea extends Component {
         return elem;
     }
 
-    componentWillMount() {
-        this.setState(this.gameObjects);
-    }
 
     componentDidMount() {
-        console.log(this.props.user)
+        this.setState(this.gameObjects);
         this.startGameLoop();
         window.onkeydown = this.handleKeyPress.bind(this);
     }
@@ -125,16 +123,15 @@ class GameArea extends Component {
             this.gameObjects.elements.push(this.getNewFallingElement());
             this.setState(this.gameObjects);
 
-        }, 5000);
+        }, 6000);
     }
 
     componentWillUnmount() {
-        this.running = false;
-        clearInterval(this.loop);
+       this.running = false;
+       clearInterval(this.loop);
     }
 
     render() {
-        console.log(this.state);
         if(!this.running) {
             return (
                 <div className="GameArea">
@@ -144,7 +141,7 @@ class GameArea extends Component {
                             <br/>
                             <h4>How to play!</h4>
                             <br/>
-                            <div style={{'font-size' : '18px'}}>
+                            <div style={{'fontSize' : '18px'}}>
                                 Solve a floating algebraic expression<br/>
                                 Type answer , then hit enter 
                             </div>
@@ -154,9 +151,9 @@ class GameArea extends Component {
             ); 
         }
         if (this.redirect) {
+            clearInterval(this.loop);
             let $=this;
             fire.orderByChild("user").equalTo(this.props.user).once('value',snapshot=>{
-                console.log(snapshot.val());
                 if (snapshot.exists()){
                     snapshot.forEach(function(child) {
                         child.ref.update({
@@ -170,9 +167,7 @@ class GameArea extends Component {
                         score:this.score
                     });
                 }
-            })
-
-
+            });
 
             localStorage.setItem('score',this.score);
             return <Redirect to='/end'/>;
