@@ -70,6 +70,11 @@ module.exports = [
         score : 2
     },
     {
+        q : '5000 x 5%',
+        ans : '250',
+        score : 1
+    },
+    {
         q : '(5 x 5²) x 4',
         ans : '1000',
         score : 3
