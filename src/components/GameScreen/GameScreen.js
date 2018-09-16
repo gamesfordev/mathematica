@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './GameScreen.css';
 import GameArea from './GameArea/GameArea';
-import Grid from '@material-ui/core/es/Grid/Grid';
-import Paper from '@material-ui/core/es/Paper/Paper';
-import AppBar from '@material-ui/core/es/AppBar/AppBar';
-import Toolbar from '@material-ui/core/es/Toolbar/Toolbar';
-import Typography from '@material-ui/core/es/Typography/Typography';
+import Grid from '@material-ui/core/Grid/Grid';
+import Paper from '@material-ui/core/Paper/Paper';
+import AppBar from '@material-ui/core/AppBar/AppBar';
+import Toolbar from '@material-ui/core/Toolbar/Toolbar';
+import Typography from '@material-ui/core/Typography/Typography';
 import GameSound from './GameSound/GameSound';
+import logoTrans from '../../assets/img/logo-trans.png';
 
 class GameScreen extends Component {
   user = '';
@@ -102,7 +103,7 @@ class GameScreen extends Component {
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
-              Mathamatica
+              <img src={logoTrans} />
             </Typography>
             <span className="user">{this.user}</span>
           </Toolbar>
