@@ -19,7 +19,7 @@ class StartScreen extends Component {
     this.setState({
       username:event.target.value
     })
-    console.log('aaa',    event.target.value);
+    
     if(event.target.value){
       this.setState({
         enabled:true
