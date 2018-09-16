@@ -58,6 +58,11 @@ module.exports = [
         q : '5²-6²',
         ans : '-11',
         score : 2
+    },
+    {
+        q : '(3²-2²)(5-3)',
+        ans : '10',
+        score : 2
     }
 
 ];
