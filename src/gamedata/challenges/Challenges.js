@@ -20,8 +20,8 @@ module.exports = [
         score : 1
     },
     {
-        q : '5 x 2',
-        ans : '10',
+        q : '5 x 2 + 1',
+        ans : '11',
         score : 1
     },
     {
@@ -58,6 +58,26 @@ module.exports = [
         q : '(sin²(x) + cos²(x))(1 + 8 x 2 - 1)',
         ans : '16',
         score : 3
+    },
+    {
+        q : '12x - 2x - 3x = 49',
+        ans : '7',
+        score : 2
+    },
+    {
+        q : '(5 x 5²) x 4',
+        ans : '1000',
+        score : 3
+    },
+    {
+        q : '!5 / !4',
+        ans : '5',
+        score : 1
+    },    
+    {
+        q : 'log₂ 8',
+        ans : '3',
+        score : 1
     }
 
 ];
