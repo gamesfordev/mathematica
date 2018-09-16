@@ -37,3 +37,31 @@
   text-align: center !important;
   font-size: 24px !important;
 }
+
+.master-beg{
+  background-color: gainsboro;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.master-med{
+  background-color: lightgrey;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.master-int{
+  background-color: goldenrod;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.master-exp{
+  background-color: gold;
+  padding: 6px;
+  font-weight: bold;
+}
+
+table td,table th {
+  font-size: 14px !important;
+}

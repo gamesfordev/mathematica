@@ -17,8 +17,12 @@ import fire from '../../fire';
 import badgeImg from '../../assets/img/badge.png';
 import logoImg from '../../assets/img/logo-up.png';
 
+import challengeList from '../../gamedata/challenges/Challenges';
+import Badge from '@material-ui/core/Badge';
+
 class EndScreen extends Component {
   loading = true;
+  fullScore = 0;
 
   constructor(){
     super();
@@ -33,7 +37,21 @@ class EndScreen extends Component {
     };
   }
 
+  getFullScore() {
+    let score = 0;
+    for (let chal in challengeList){
+      score += challengeList[chal].score;
+    }
+    return score;
+  }
+
+  getPercentage(score) {
+    return ((score / this.fullScore) * 100).toFixed(2);
+  }
+
   componentDidMount() {
+    this.fullScore = this.getFullScore();
+    console.log(this.getFullScore());
     this.loading = true;
     this.state = {
       score: localStorage.getItem('score'),
@@ -92,6 +110,7 @@ class EndScreen extends Component {
                   <TableRow>
                     <TableCell>Player</TableCell>
                     <TableCell numeric>Score</TableCell>
+                    <TableCell>Level</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -102,6 +121,13 @@ class EndScreen extends Component {
 
                         <TableCell>{row.user}</TableCell>
                         <TableCell numeric>{row.score}</TableCell>
+
+                        <TableCell>
+                          {this.getPercentage(row.score) > 90 ? <span className="master-exp">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                          {this.getPercentage(row.score) > 70 ? <span className="master-int">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                          {this.getPercentage(row.score) > 30 ? <span className="master-med">General - {this.getPercentage(row.score)} %</span> : null}
+                          {this.getPercentage(row.score) < 30 ? <span className="master-beg">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                        </TableCell>
 
                       </TableRow>
                     );
