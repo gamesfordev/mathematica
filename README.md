@@ -12,9 +12,11 @@
 
 * In the right side of the screen you will see your score and number of chances you have. For each attempt you will get 3 chances. That mean you can miss maximally 3 expressions. 
 
-# How to Deploy Mathematica Locally
+* After you finished all the challanges or after the time out you will see the leader board.
+![leaderboard](https://user-images.githubusercontent.com/7692626/45598261-9d398800-ba0b-11e8-959c-6ffee8ecf559.png)
 
-* Fork this repository
+
+# How to Deploy Mathematica Locally
 
 * Clone this repository
 
