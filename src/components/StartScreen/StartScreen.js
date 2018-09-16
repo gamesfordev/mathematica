@@ -8,7 +8,8 @@ class StartScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username:''
+      username:'',
+      enabled:false
     }
     localStorage.removeItem('username');
 
@@ -18,10 +19,23 @@ class StartScreen extends Component {
     this.setState({
       username:event.target.value
     })
+    console.log('aaa',    event.target.value);
+    if(event.target.value){
+      this.setState({
+        enabled:true
+      })
+    }
+    else{
+      this.setState({
+        enabled:false
+      })
+    }
+  }
+  componentDidMount() {
 
   }
-
   render() {
+
     return (
       <div className="StartScreen">
         <div className="master">
@@ -42,7 +56,7 @@ class StartScreen extends Component {
                 autoFocus="true"
               />
               &nbsp;&nbsp;&nbsp;
-              <Link to={"/game/"+this.state.username}><Button variant="contained" color="primary" className="">
+              <Link to={"/game/"+this.state.username} id="loginBtn"><Button  variant="contained" color="primary" className="" disabled={!this.state.enabled}>
                 Login
               </Button></Link>
 
