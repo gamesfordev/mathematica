@@ -1,137 +1,141 @@
 .GameScreen {
-
 }
 
-.container{
-    padding: 20px;
+.container {
+  padding: 20px;
 }
 
-.left-screen{
-    height: 80vh;
-
+.left-screen {
+  height: 80vh;
 }
-.right-screen{
-
+.right-screen {
 }
 
-.user{
-    flex-grow: 1;
-    text-align: right;
-    justify-content: flex-end;
+.user {
+  flex-grow: 0.1;
+  text-align: right;
+  justify-content: flex-end;
 }
-.game{
-    height: 97%;
-    padding: 10px;
-    background-image: url("../../assets/img/gamebg.jpg");
-    background-size: cover;
-    overflow: hidden;
+.music-btn {
+  text-align: right;
+  justify-content: flex-end;
+}
+.music-icon {
+  flex-grow: 1;
+  text-align: right;
+  justify-content: flex-end;
+}
+.game {
+  height: 97%;
+  padding: 10px;
+  background-image: url('../../assets/img/gamebg.jpg');
+  background-size: cover;
+  overflow: hidden;
 }
 
 .game-anim {
-    animation-name: gameanim; 
-    animation-duration: 0.2s;
-    filter : grayscale(0);
+  animation-name: gameanim;
+  animation-duration: 0.2s;
+  filter: grayscale(0);
 }
-
-
 
 @keyframes gameanim {
-    from {
-        filter : grayscale(0)
-    }
-    to {
-        filter : grayscale(1)
-    }
-    again {
-        filter : grayscale(0)
-    }
+  from {
+    filter: grayscale(0);
+  }
+  to {
+    filter: grayscale(1);
+  }
+  again {
+    filter: grayscale(0);
+  }
 }
-.score{
-    padding: 10px;
-    height: 48%;
-    margin-bottom: 5px;
+.score {
+  padding: 10px;
+  height: 48%;
+  margin-bottom: 5px;
 
-    background-color: #fff;
-    background-image:
-            linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-            linear-gradient(#eee .1em, transparent .1em);
-    background-size: 100% 1.2em;
-
-
-    color: #000;
-
+  background-color: #fff;
+  background-image: linear-gradient(
+      90deg,
+      transparent 79px,
+      #abced4 79px,
+      #abced4 81px,
+      transparent 81px
+    ),
+    linear-gradient(#eee 0.1em, transparent 0.1em);
+  background-size: 100% 1.2em;
+  color: #000;
 }
-.chances{
-    padding: 10px;
-    height: 48%;
-    background-color: #fff;
-    background-image:
-            linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-            linear-gradient(#eee .1em, transparent .1em);
-    background-size: 100% 1.2em;
-
-    color: #000;
+.chances {
+  padding: 10px;
+  height: 48%;
+  background-color: #fff;
+  background-image: linear-gradient(
+      90deg,
+      transparent 79px,
+      #abced4 79px,
+      #abced4 81px,
+      transparent 81px
+    ),
+    linear-gradient(#eee 0.1em, transparent 0.1em);
+  background-size: 100% 1.2em;
+  color: #000;
 }
-.count{
-    height: 75%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    font-size: 70px;
+.count {
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 70px;
 }
-
-.buffer{
-    text-align: center;
-    font-size: 18px;
+.buffer {
+  text-align: center;
+  font-size: 18px;
 }
-
-.buffer span.ans{
-    font-weight: bold;
-    color : red;
-    font-size: 18px;
+.buffer span.ans {
+  font-weight: bold;
+  color: red;
+  font-size: 18px;
 }
-
-.chances .count{
-    height: 60%;
+.chances .count {
+  height: 60%;
 }
-h4{    margin: 0;
-    font-size: 20px;
-    text-align: center;
-    border-bottom: 1px solid #888;
-    padding: 5px;}
-    
-
-.master{
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+h4 {
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #888;
+  padding: 5px;
 }
-.login_box{
-    width: 40%;
-    height: 400px;
-    background-color: #bcd3db;
-    margin: auto;
+.master {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.login_box .logo{
-    width: 100%;
-    height: 200px;
-    background: #f0f0f0
+.login_box {
+  width: 40%;
+  height: 400px;
+  background-color: #bcd3db;
+  margin: auto;
 }
-.login_box .name{
-    display: flex;
+.login_box .logo {
+  width: 100%;
+  height: 200px;
+  background: #f0f0f0;
 }
-
-.login_box .name .loginForm{
-    margin: auto;
-    height: 100px;
+.login_box .name {
+  display: flex;
 }
-.loginForm .user_name{
-    color: #f0f0f0
+.login_box .name .loginForm {
+  margin: auto;
+  height: 100px;
 }
-
-
+.loginForm .user_name {
+  color: #f0f0f0;
+}
