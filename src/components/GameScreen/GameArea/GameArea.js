@@ -86,8 +86,8 @@ class GameArea extends Component {
 
         }
         else {
+            clearInterval(this.loop);
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
     }
 
@@ -96,8 +96,8 @@ class GameArea extends Component {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
         if(!chal) {
+            clearInterval(this.loop);
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
         let elem = {
             id: id,
@@ -128,8 +128,8 @@ class GameArea extends Component {
     }
 
     componentWillUnmount() {
-        this.running = false;
         clearInterval(this.loop);
+        this.running = false;
     }
 
     render() {
@@ -173,7 +173,6 @@ class GameArea extends Component {
 
 
             localStorage.setItem('score',this.score);
-            clearInterval(this.loop);
             return <Redirect to='/end'/>;
         }
         return (
