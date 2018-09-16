@@ -88,7 +88,7 @@ class GameScreen extends Component {
   };
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
+   window.removeEventListener('resize', this.updateDimensions);
   }
 
   playEffect(effect) {
