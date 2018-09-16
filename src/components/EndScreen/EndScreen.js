@@ -37,6 +37,20 @@ class EndScreen extends Component {
     };
   }
 
+  getLevel(score) {
+    let per = this.getPercentage(score);
+    if(per >= 80) {
+      return (<span className="master-exp">Expert - {per} %</span>);
+    }
+    else if(per > 60) {
+      return (<span className="master-int">Advanced - {per} %</span>);
+    }
+    else {
+      return (<span className="master-beg">Beginner - {per} %</span>);
+    
+    }
+  }
+
   getFullScore() {
     let score = 0;
     for (let chal in challengeList){
@@ -123,10 +137,7 @@ class EndScreen extends Component {
                         <TableCell numeric>{row.score}</TableCell>
 
                         <TableCell>
-                          {this.getPercentage(row.score) > 90 ? <span className="master-exp">Beginner - {this.getPercentage(row.score)} %</span> : null}
-                          {this.getPercentage(row.score) > 70 ? <span className="master-int">Beginner - {this.getPercentage(row.score)} %</span> : null}
-                          {this.getPercentage(row.score) > 30 ? <span className="master-med">General - {this.getPercentage(row.score)} %</span> : null}
-                          {this.getPercentage(row.score) < 30 ? <span className="master-beg">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                            {this.getLevel(row.score)}
                         </TableCell>
 
                       </TableRow>
