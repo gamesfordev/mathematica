@@ -14,8 +14,15 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import fire from '../../fire';
 
+import badgeImg from '../../assets/img/badge.png';
+import logoImg from '../../assets/img/logo-up.png';
+
+import challengeList from '../../gamedata/challenges/Challenges';
+import Badge from '@material-ui/core/Badge';
+
 class EndScreen extends Component {
   loading = true;
+  fullScore = 0;
 
   constructor(){
     super();
@@ -30,7 +37,21 @@ class EndScreen extends Component {
     };
   }
 
+  getFullScore() {
+    let score = 0;
+    for (let chal in challengeList){
+      score += challengeList[chal].score;
+    }
+    return score;
+  }
+
+  getPercentage(score) {
+    return ((score / this.fullScore) * 100).toFixed(2);
+  }
+
   componentDidMount() {
+    this.fullScore = this.getFullScore();
+    console.log(this.getFullScore());
     this.loading = true;
     this.state = {
       score: localStorage.getItem('score'),
@@ -77,7 +98,7 @@ class EndScreen extends Component {
   render() {
     return (
       <div className="EndScreen">
-        <h1 className="title"> <img src="assets/img/logo.png"/></h1>
+        <h1 className="title"> <img src={logoImg}/></h1>
 
         <Grid container spacing={24} className="container">
 
@@ -89,6 +110,7 @@ class EndScreen extends Component {
                   <TableRow>
                     <TableCell>Player</TableCell>
                     <TableCell numeric>Score</TableCell>
+                    <TableCell>Level</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -99,6 +121,13 @@ class EndScreen extends Component {
 
                         <TableCell>{row.user}</TableCell>
                         <TableCell numeric>{row.score}</TableCell>
+
+                        <TableCell>
+                          {this.getPercentage(row.score) > 90 ? <span className="master-exp">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                          {this.getPercentage(row.score) > 70 ? <span className="master-int">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                          {this.getPercentage(row.score) > 30 ? <span className="master-med">General - {this.getPercentage(row.score)} %</span> : null}
+                          {this.getPercentage(row.score) < 30 ? <span className="master-beg">Beginner - {this.getPercentage(row.score)} %</span> : null}
+                        </TableCell>
 
                       </TableRow>
                     );
@@ -126,7 +155,7 @@ class EndScreen extends Component {
               <div id="congratz">
                 <h2>Congratulations...!!!</h2>
                 <h3>You have scored {this.state.score}</h3>
-                <img src="../../assets/img/badge.png" />
+                <img src= {badgeImg}/>
 
 
               </div>

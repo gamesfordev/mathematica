@@ -1,13 +1,37 @@
 import React, { Component } from 'react';
 import soundFile from '../../../assets/audio/bgmusic.mp3';
 import beepFile from '../../../assets/audio/beep.mp3';
+import correctSoundFile from '../../../assets/audio/correct-sound.mp3';
+import missedSoundFile from '../../../assets/audio/missed-sound.mp3';
+import newelementSoundFile from '../../../assets/audio/newelement-sound.ogg';
+import wrongSoundFile from '../../../assets/audio/wrong-sound.mp3';
 
 class GameSound extends Component {
-
   playEffect(effect) {
-    console.log("play sound : " + effect);
+    console.log('play sound : ' + effect);
     let audio = new Audio(beepFile);
-    audio.play();
+    let correctSound = new Audio(correctSoundFile);
+    let missedSound = new Audio(missedSoundFile);
+    let newelementSound = new Audio(newelementSoundFile);
+    let wrongSound = new Audio(wrongSoundFile);
+    switch (effect) {
+      case 'correct-sound':
+        correctSound.play();
+        break;
+      case 'wrong-sound':
+        wrongSound.play();
+        break;
+      case 'missed-sound':
+        missedSound.play();
+        break;
+      case 'newelement-sound':
+        newelementSound.play();
+        break;
+
+      default:
+        audio.play();
+        break;
+    }
   }
 
   componentDidMount() {
