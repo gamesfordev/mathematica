@@ -26,6 +26,7 @@
 }
 .login_box .name{
     display: flex;
+    margin-top: 15px;
 }
  .login_box .name .loginForm{
     margin: auto;

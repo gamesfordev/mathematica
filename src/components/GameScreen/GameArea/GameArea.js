@@ -148,10 +148,25 @@ class GameArea extends Component {
             ); 
         }
         if (this.redirect) {
-            fire.push({
-                user:this.props.user,
-                score:this.score
-            });
+            let $=this;
+            fire.orderByChild("user").equalTo(this.props.user).once('value',snapshot=>{
+                console.log(snapshot.val());
+                if (snapshot.exists()){
+                    snapshot.forEach(function(child) {
+                        child.ref.update({
+                            score:$.score
+                        });
+                    });
+
+                }else{
+                    fire.push({
+                        user:this.props.user,
+                        score:this.score
+                    });
+                }
+            })
+
+
 
             localStorage.setItem('score',this.score);
             return <Redirect to='/end'/>;

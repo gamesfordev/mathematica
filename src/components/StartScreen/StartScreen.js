@@ -27,7 +27,7 @@ class StartScreen extends Component {
         <div className="master">
           <div className="login_box">
             <div className="logo">
-              <img src={logo}/>
+              <img src={logo} style={{width:"100%"}}/>
             </div>
             <div className="name">
               <form className="loginForm"> 

@@ -25,7 +25,7 @@
 
 .btn{
     width: 47%;
-
+  font-size: 13px !important;
 }
 
 .current-user {
