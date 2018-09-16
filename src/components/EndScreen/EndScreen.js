@@ -19,6 +19,8 @@ class EndScreen extends Component {
 
   constructor(){
     super();
+
+
     this.state = {
       score: localStorage.getItem('score'),
       players: [],
@@ -39,12 +41,14 @@ class EndScreen extends Component {
     };
     let dbRef = fire.orderByChild('score');
     dbRef.on('value', snapshot => {
-      const players = Object.values(snapshot.val())
-        .sort((a, b) => b.score - a.score);
-      this.loading = false;
-      this.setState({
-        players: players
-      });
+      if (snapshot.exists()) {
+          const players = Object.values(snapshot.val())
+              .sort((a, b) => b.score - a.score);
+          this.loading = false;
+          this.setState({
+              players: players
+          });
+      }
     });
     this.share = this.share.bind(this);
     this.url = window.location.href;
@@ -73,7 +77,7 @@ class EndScreen extends Component {
   render() {
     return (
       <div className="EndScreen">
-        <h1 className="title"> Mathematica logo here</h1>
+        <h1 className="title"> <img src="assets/img/logo.png"/></h1>
 
         <Grid container spacing={24} className="container">
 

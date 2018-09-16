@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './StartScreen.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import logo from '../../assets/img/logo.png';
 class StartScreen extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ class StartScreen extends Component {
         <div className="master">
           <div className="login_box">
             <div className="logo">
-              <img src="" />
+              <img src={logo} style={{width:"100%"}}/>
             </div>
             <div className="name">
               <form className="loginForm"> 

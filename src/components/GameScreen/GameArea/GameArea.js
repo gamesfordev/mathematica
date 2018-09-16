@@ -30,10 +30,14 @@ class GameArea extends Component {
     processAns(ans) {
         for (let i in this.gameObjects.elements) {
             if (ans == this.gameObjects.elements[i].answer) {
+                this.props.playEffect('correct-sound');
                 this.updateScore(this.gameObjects.elements[i].score);
                 delete this.gameObjects.elements[i];
                 this.setState(this.gameObjects);
                 break;
+            }
+            else {
+                this.props.playEffect('wrong-sound');
             }
         }
     }
@@ -68,6 +72,7 @@ class GameArea extends Component {
 
     removeElement(item) {
         this.chances++;
+        this.props.playEffect('missed-sound');
         this.props.flashImage();
         this.props.updateChances(this.chances);
         if (this.chances <= this.maxChances) {
@@ -87,6 +92,7 @@ class GameArea extends Component {
     }
 
     getNewFallingElement() {
+        this.props.playEffect('newelement-sound');
         let id = this.nextId++;
         let chal = this.getNextChallenge();
         if(!chal) {
@@ -148,10 +154,25 @@ class GameArea extends Component {
             ); 
         }
         if (this.redirect) {
-            fire.push({
-                user:this.props.user,
-                score:this.score
-            });
+            let $=this;
+            fire.orderByChild("user").equalTo(this.props.user).once('value',snapshot=>{
+                console.log(snapshot.val());
+                if (snapshot.exists()){
+                    snapshot.forEach(function(child) {
+                        child.ref.update({
+                            score:$.score
+                        });
+                    });
+
+                }else{
+                    fire.push({
+                        user:this.props.user,
+                        score:this.score
+                    });
+                }
+            })
+
+
 
             localStorage.setItem('score',this.score);
             return <Redirect to='/end'/>;
