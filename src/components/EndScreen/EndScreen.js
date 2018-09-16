@@ -14,6 +14,9 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import fire from '../../fire';
 
+import badgeImg from '../../assets/img/badge.png';
+import logoImg from '../../assets/img/logo-up.png';
+
 class EndScreen extends Component {
   loading = true;
 
@@ -77,7 +80,7 @@ class EndScreen extends Component {
   render() {
     return (
       <div className="EndScreen">
-        <h1 className="title"> <img src="assets/img/logo.png"/></h1>
+        <h1 className="title"> <img src={logoImg}/></h1>
 
         <Grid container spacing={24} className="container">
 
@@ -126,7 +129,7 @@ class EndScreen extends Component {
               <div id="congratz">
                 <h2>Congratulations...!!!</h2>
                 <h3>You have scored {this.state.score}</h3>
-                <img src="../../assets/img/badge.png" />
+                <img src= {badgeImg}/>
 
 
               </div>
