@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 import './GameArea.css';
 import FallingElement from './GameObjects/FallingElement/FallingElement';
 import challengeList from '../../../gamedata/challenges/Challenges';
@@ -87,7 +87,6 @@ class GameArea extends Component {
         }
         else {
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
     }
 

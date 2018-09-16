@@ -4,7 +4,11 @@ import './StartScreen.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import logo from '../../assets/img/logo.png';
+import { Redirect } from 'react-router'
 class StartScreen extends Component {
+
+  redirect = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +38,17 @@ class StartScreen extends Component {
   componentDidMount() {
 
   }
+
+  startGame(e) {
+    e.preventDefault();
+    this.redirect = true;
+  }
+
   render() {
+
+    if(this.redirect) {
+      return <Redirect to={'/game/' + this.state.username}/>;
+    }
 
     return (
       <div className="StartScreen">
@@ -54,11 +68,12 @@ class StartScreen extends Component {
                 onChange={(e)=>this.addName(e)}
                 autoComplete="off"
                 autoFocus={true}
+                onKeyDown={(e) => { if(e.key == 'Enter') {this.startGame(e)}}}
               />
               &nbsp;&nbsp;&nbsp;
-              <Link to={"/game/"+this.state.username} id="loginBtn"><Button  variant="contained" color="primary" className="" disabled={!this.state.enabled}>
+              <Button onClick={this.startGame.bind(this)}  variant="contained" color="primary" className="" disabled={!this.state.enabled}>
                 Login
-              </Button></Link>
+              </Button>
 
               </form>
             </div>
