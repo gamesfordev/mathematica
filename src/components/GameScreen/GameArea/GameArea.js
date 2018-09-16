@@ -173,6 +173,7 @@ class GameArea extends Component {
 
 
             localStorage.setItem('score',this.score);
+            clearInterval(this.loop);
             return <Redirect to='/end'/>;
         }
         return (
