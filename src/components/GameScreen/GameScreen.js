@@ -90,10 +90,15 @@ class GameScreen extends Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
+  playEffect(effect) {
+    if(this.child)
+      this.child.playEffect(effect);
+  }
+
   render() {
     return (
       <div className="GameScreen">
-        <GameSound />
+        <GameSound ref={instance => { this.child = instance; }} />
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
@@ -111,6 +116,7 @@ class GameScreen extends Component {
                 updateScore={this.updateScore.bind(this)}
                 updateBuffer={this.updateBuffer.bind(this)}
                 flashImage={this.flashImage.bind(this)}
+                playEffect={this.playEffect.bind(this)}
                 user={this.user}
               />
             </Paper>

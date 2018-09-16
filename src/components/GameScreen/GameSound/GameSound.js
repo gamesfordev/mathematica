@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import soundFile from '../bgmusic.mp3';
 
 class GameSound extends Component {
+
+  playEffect(effect) {
+    console.log("play sound : " + effect);
+  }
+
   componentDidMount() {
     this.sound(soundFile);
     this.play();

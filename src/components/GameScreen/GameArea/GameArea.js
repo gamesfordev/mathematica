@@ -30,10 +30,14 @@ class GameArea extends Component {
     processAns(ans) {
         for (let i in this.gameObjects.elements) {
             if (ans == this.gameObjects.elements[i].answer) {
+                this.props.playEffect('correct-sound');
                 this.updateScore(this.gameObjects.elements[i].score);
                 delete this.gameObjects.elements[i];
                 this.setState(this.gameObjects);
                 break;
+            }
+            else {
+                this.props.playEffect('wrong-sound');
             }
         }
     }
@@ -68,6 +72,7 @@ class GameArea extends Component {
 
     removeElement(item) {
         this.chances++;
+        this.props.playEffect('missed-sound');
         this.props.flashImage();
         this.props.updateChances(this.chances);
         if (this.chances <= this.maxChances) {
@@ -87,6 +92,7 @@ class GameArea extends Component {
     }
 
     getNewFallingElement() {
+        this.props.playEffect('newelement-sound');
         let id = this.nextId++;
         let chal = this.getNextChallenge();
         if(!chal) {
