@@ -56,7 +56,7 @@ class GameArea extends Component {
                 break;
 
             default:
-                if((e.keyCode >= 65 && e.keyCode <= 90) || e.key != "Shift") {
+                if(("abcdefghijklmnopqrstuvwxyz0123456789-+ ".indexOf(e.key) != -1)) {
                     this.buffer += e.key;
                 }
                 break;
