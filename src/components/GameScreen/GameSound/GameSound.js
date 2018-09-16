@@ -8,7 +8,6 @@ import wrongSoundFile from '../../../assets/audio/wrong-sound.mp3';
 
 class GameSound extends Component {
   playEffect(effect) {
-    console.log('play sound : ' + effect);
     let audio = new Audio(beepFile);
     let correctSound = new Audio(correctSoundFile);
     let missedSound = new Audio(missedSoundFile);

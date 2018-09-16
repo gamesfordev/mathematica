@@ -67,7 +67,6 @@ class EndScreen extends Component {
 
   componentDidMount() {
     this.fullScore = this.getFullScore();
-    console.log(this.getFullScore());
     this.loading = true;
     this.state = {
       score: localStorage.getItem('score'),

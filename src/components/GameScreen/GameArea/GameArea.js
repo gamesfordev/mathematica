@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 import './GameArea.css';
 import FallingElement from './GameObjects/FallingElement/FallingElement';
 import challengeList from '../../../gamedata/challenges/Challenges';
@@ -86,8 +86,8 @@ class GameArea extends Component {
 
         }
         else {
+            clearInterval(this.loop);
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
     }
 
@@ -96,8 +96,8 @@ class GameArea extends Component {
         let id = this.nextId++;
         let chal = this.getNextChallenge();
         if(!chal) {
+            clearInterval(this.loop);
             this.redirect = true;
-            this.setState(this.gameObjects);
         }
         let elem = {
             id: id,
