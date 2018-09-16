@@ -108,12 +108,11 @@ class GameArea extends Component {
         return elem;
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState(this.gameObjects);
     }
 
     componentDidMount() {
-        console.log(this.props.user)
         this.startGameLoop();
         window.onkeydown = this.handleKeyPress.bind(this);
     }
@@ -134,7 +133,6 @@ class GameArea extends Component {
     }
 
     render() {
-        console.log(this.state);
         if(!this.running) {
             return (
                 <div className="GameArea">
@@ -144,7 +142,7 @@ class GameArea extends Component {
                             <br/>
                             <h4>How to play!</h4>
                             <br/>
-                            <div style={{'font-size' : '18px'}}>
+                            <div style={{'fontSize' : '18px'}}>
                                 Solve a floating algebraic expression<br/>
                                 Type answer , then hit enter 
                             </div>

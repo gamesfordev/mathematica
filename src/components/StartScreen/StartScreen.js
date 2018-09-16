@@ -19,7 +19,7 @@ class StartScreen extends Component {
     this.setState({
       username:event.target.value
     })
-    
+
     if(event.target.value){
       this.setState({
         enabled:true
@@ -53,7 +53,7 @@ class StartScreen extends Component {
                 className="user_name"
                 onChange={(e)=>this.addName(e)}
                 autoComplete="off"
-                autoFocus="true"
+                autoFocus={true}
               />
               &nbsp;&nbsp;&nbsp;
               <Link to={"/game/"+this.state.username} id="loginBtn"><Button  variant="contained" color="primary" className="" disabled={!this.state.enabled}>

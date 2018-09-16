@@ -20,6 +20,8 @@ import logoImg from '../../assets/img/logo-up.png';
 import challengeList from '../../gamedata/challenges/Challenges';
 import Badge from '@material-ui/core/Badge';
 
+import util from '../../util/utils';
+
 class EndScreen extends Component {
   loading = true;
   fullScore = 0;
@@ -128,10 +130,10 @@ class EndScreen extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {this.loading ? <TableCell className="loading" colSpan={2}>Loading Scores...</TableCell> : null}
+                  {this.loading ? <TableRow><TableCell className="loading" colSpan={2}>Loading Scores...</TableCell></TableRow> : null}
                   {this.state.players.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => {
                     return (
-                      <TableRow key={row.id} className={this.state.username == row.user ? 'current-user' : ''}>
+                      <TableRow key={util.generateRandomString()} className={this.state.username == row.user ? 'current-user' : ''}>
 
                         <TableCell>{row.user}</TableCell>
                         <TableCell numeric>{row.score}</TableCell>
