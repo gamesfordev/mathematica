@@ -7,29 +7,51 @@ import newelementSoundFile from '../../../assets/audio/newelement-sound.ogg';
 import wrongSoundFile from '../../../assets/audio/wrong-sound.mp3';
 
 class GameSound extends Component {
+  constructor() {
+    super();
+    this.audio = new Audio(beepFile);
+    this.correctSound = new Audio(correctSoundFile);
+    this.missedSound = new Audio(missedSoundFile);
+    this.wrongSound = new Audio(wrongSoundFile);
+    this.newelementSound = new Audio(newelementSoundFile);
+  }
+
   playEffect(effect) {
-    let audio = new Audio(beepFile);
-    let correctSound = new Audio(correctSoundFile);
-    let missedSound = new Audio(missedSoundFile);
-    let newelementSound = new Audio(newelementSoundFile);
-    let wrongSound = new Audio(wrongSoundFile);
     switch (effect) {
       case 'correct-sound':
-        correctSound.play();
+        this.correctSound.play();
         break;
       case 'wrong-sound':
-        wrongSound.play();
+        this.wrongSound.play();
         break;
       case 'missed-sound':
-        missedSound.play();
+        this.missedSound.play();
         break;
       case 'newelement-sound':
-        newelementSound.play();
+        this.newelementSound.play();
         break;
 
       default:
-        audio.play();
+        this.audio.play();
         break;
+    }
+  }
+
+  toggleMusic(music) {
+    if (music) {
+      this.sound.muted = false;
+      this.audio.muted = false;
+      this.correctSound.muted = false;
+      this.missedSound.muted = false;
+      this.wrongSound.muted = false;
+      this.newelementSound.muted = false;
+    } else {
+      this.sound.muted = true;
+      this.audio.muted = true;
+      this.correctSound.muted = true;
+      this.missedSound.muted = true;
+      this.wrongSound.muted = true;
+      this.newelementSound.muted = true;
     }
   }
 

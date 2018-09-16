@@ -8,6 +8,8 @@ import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography/Typography';
 import GameSound from './GameSound/GameSound';
 import logoTrans from '../../assets/img/logo-trans.png';
+import Switch from '@material-ui/core/Switch';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 class GameScreen extends Component {
   user = '';
@@ -70,7 +72,8 @@ class GameScreen extends Component {
       score: 0,
       chances: 0,
       buffer: '',
-      cls: 'game'
+      cls: 'game',
+      music: true
     };
   }
 
@@ -92,19 +95,42 @@ class GameScreen extends Component {
   }
 
   playEffect(effect) {
-    if(this.child)
-      this.child.playEffect(effect);
+    if (this.child) this.child.playEffect(effect);
   }
+
+  musicToggle = name => event => {
+    this.setState({ [name]: event.target.checked });
+    if (this.child) this.child.toggleMusic(event.target.checked);
+  };
 
   render() {
     return (
       <div className="GameScreen">
-        <GameSound ref={instance => { this.child = instance; }} />
+        <GameSound
+          ref={instance => {
+            this.child = instance;
+          }}
+        />
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="title" color="inherit">
               <img src={logoTrans} />
             </Typography>
+            <span className="music-icon">
+              <SvgIcon>
+                <path
+                  fill="#000000"
+                  d="M16,9H13V14.5A2.5,2.5 0 0,1 10.5,17A2.5,2.5 0 0,1 8,14.5A2.5,2.5 0 0,1 10.5,12C11.07,12 11.58,12.19 12,12.5V7H16V9M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"
+                />
+              </SvgIcon>
+            </span>
+            <span className="music-btn">
+              <Switch
+                checked={this.state.music}
+                onChange={this.musicToggle('music')}
+                value="music"
+              />
+            </span>
             <span className="user">{this.user}</span>
           </Toolbar>
         </AppBar>
