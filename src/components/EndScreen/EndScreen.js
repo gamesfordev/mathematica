@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './EndScreen.css';
 import Grid from '@material-ui/core/Grid';
-import Paper from "@material-ui/core/es/Paper/Paper";
+import Paper from "@material-ui/core/Paper/Paper";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';

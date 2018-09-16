@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './GameScreen.css';
 import GameArea from './GameArea/GameArea';
-import Grid from '@material-ui/core/es/Grid/Grid';
-import Paper from '@material-ui/core/es/Paper/Paper';
-import AppBar from '@material-ui/core/es/AppBar/AppBar';
-import Toolbar from '@material-ui/core/es/Toolbar/Toolbar';
-import Typography from '@material-ui/core/es/Typography/Typography';
+import Grid from '@material-ui/core/Grid/Grid';
+import Paper from '@material-ui/core/Paper/Paper';
+import AppBar from '@material-ui/core/AppBar/AppBar';
+import Toolbar from '@material-ui/core/Toolbar/Toolbar';
+import Typography from '@material-ui/core/Typography/Typography';
 import GameSound from './GameSound/GameSound';
 
 class GameScreen extends Component {
