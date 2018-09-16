@@ -87,6 +87,7 @@ class GameArea extends Component {
         }
         else {
             this.redirect = true;
+            this.setState(this.gameObjects);
         }
     }
 

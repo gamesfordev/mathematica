@@ -41,7 +41,13 @@ class StartScreen extends Component {
 
   startGame(e) {
     e.preventDefault();
-    this.redirect = true;
+    if(this.state.enabled) {
+      this.redirect = true;
+      this.setState({
+        username : this.state.username,
+        enabled : this.state.enabled
+      });
+    }
   }
 
   render() {
