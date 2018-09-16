@@ -109,11 +109,9 @@ class GameArea extends Component {
         return elem;
     }
 
-    componentDidMount() {
-        this.setState(this.gameObjects);
-    }
 
     componentDidMount() {
+        this.setState(this.gameObjects);
         this.startGameLoop();
         window.onkeydown = this.handleKeyPress.bind(this);
     }
@@ -129,8 +127,8 @@ class GameArea extends Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.loop);
-        this.running = false;
+       this.running = false;
+       clearInterval(this.loop);
     }
 
     render() {
@@ -153,9 +151,9 @@ class GameArea extends Component {
             ); 
         }
         if (this.redirect) {
+            clearInterval(this.loop);
             let $=this;
             fire.orderByChild("user").equalTo(this.props.user).once('value',snapshot=>{
-                console.log(snapshot.val());
                 if (snapshot.exists()){
                     snapshot.forEach(function(child) {
                         child.ref.update({
@@ -169,9 +167,7 @@ class GameArea extends Component {
                         score:this.score
                     });
                 }
-            })
-
-
+            });
 
             localStorage.setItem('score',this.score);
             return <Redirect to='/end'/>;
