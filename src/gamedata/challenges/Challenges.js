@@ -55,6 +55,11 @@ module.exports = [
         score : 2
     },
     {
+        q : '3² + 4²',
+        ans : '25',
+        score : 3
+    },
+    {
         q : '(sin²(x) + cos²(x))(1 + 8 x 2 - 1)',
         ans : '16',
         score : 3
@@ -78,6 +83,17 @@ module.exports = [
         q : 'log₂ 8',
         ans : '3',
         score : 1
+    },
+    {
+        q : '5² - 6²',
+        ans : '-11',
+        score : 2
+    },
+    {
+        q : '(3² - 2²)( 5 - 3)',
+        ans : '10',
+        score : 2
     }
+
 
 ];
